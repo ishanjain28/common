@@ -6,7 +6,7 @@
 
 #---- Bash command to run script ---------------------------------------------------
 
-#bash -c "$(wget -qLO - https://raw.githubusercontent.com/ahuacate/common/master/pve/tool/pve_tester888_ct_ubuntu.sh)"
+#bash -c "$(wget -qLO - https://raw.githubusercontent.com/ishanjain28/common/master/pve/tool/pve_tester888_ct_ubuntu.sh)"
 
 #---- Source -----------------------------------------------------------------------
 
@@ -86,7 +86,7 @@ CT_NESTING='1'
 # Startup Order
 CT_STARTUP='2'
 # Container Root Password ( 0 means none )
-CT_PASSWORD='ahuacate'
+CT_PASSWORD='ishanjain28'
 # PVE Container OS
 OSTYPE='ubuntu'
 OSVERSION='21.04'
@@ -111,10 +111,10 @@ fi
 if [ $CT_NEW == 0 ] && [ "$(pct_list | awk -F',' '{ print $1 }' | grep -w $CTID > /dev/null; echo $?)" != 0 ]; then
   #---- Developer Options
   FUNC_NAS_HOSTNAME=nas
-  if [ -f /mnt/pve/nas-*[0-9]-git/ahuacate/developer_settings.git ]; then
+  if [ -f /mnt/pve/nas-*[0-9]-git/ishanjain28/developer_settings.git ]; then
     while IFS== read -r var val; do
       eval ${var}=${val}
-    done < <(cat /mnt/pve/nas-*[0-9]-git/ahuacate/developer_settings.git | grep -v '^#')
+    done < <(cat /mnt/pve/nas-*[0-9]-git/ishanjain28/developer_settings.git | grep -v '^#')
   fi
   if [ $dev_git_mount = 0 ] && [ $DEV_GIT_MOUNT_ENABLE = 0 ]; then
     pvesm status | grep -v 'local' | grep -wEi "^${FUNC_NAS_HOSTNAME}\-[0-9]+\-git" | awk '{print $1,"/mnt/pve/"$1}' >> pvesm_input_list
